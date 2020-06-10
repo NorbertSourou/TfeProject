@@ -1,20 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/edt_groupName"
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Ajouter un Patient"
+        android:textSize="20dp"
+        android:textColor="#2699FB" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-android:text="tttt"
-        android:background="@null"
-        android:gravity="top"
-        android:inputType="textCapWords"
-        android:maxLines="1"
-        android:scrollbars="vertical"
-        android:singleLine="true"
-        android:textColor="@color/colorPrimaryDark" />
+        android:backgroundTint="#2699FB"
+        android:hint="Name"
+        android:textColorHint="#2699FB"
+        app:endIconMode="clear_text"
+        app:endIconTint="#2699FB"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="#2699FB"
+        app:startIconDrawable="@drawable/ic_person_black_24dp"
+        app:startIconTint="#2699FB">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="8dp"
+            android:inputType="text"
+            android:textColor="#2699FB" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:backgroundTint="#2699FB"
+        android:hint="Surname"
+        android:textColorHint="#2699FB"
+        app:endIconMode="clear_text"
+        app:endIconTint="#2699FB"
+        app:hintTextColor="#2699FB"
+        app:startIconDrawable="@drawable/ic_person_black_24dp"
+        app:startIconTint="#2699FB">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextSurname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:inputType="text"
+            android:textColor="#2699FB" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:backgroundTint="#2699FB"
+        android:hint="N° Lit"
+        android:textColorHint="#2699FB"
+        app:endIconMode="clear_text"
+        app:endIconTint="#2699FB"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="#2699FB"
+        app:startIconDrawable="@drawable/ic_hotel_black_24dp"
+        app:startIconTint="#2699FB">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:inputType="text"
+            android:textColor="#2699FB" />
+    </com.google.android.material.textfield.TextInputLayout>
 </LinearLayout>

@@ -9,10 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginHorizontal="7dp"
-        android:layout_marginVertical="2dp"
-        app:cardCornerRadius="11dp"
-        app:cardElevation="7dp">
+        android:layout_marginHorizontal="9dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="4dp"
+        app:cardCornerRadius="9dp"
+        app:cardElevation="2dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -24,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginVertical="30dp"
+                android:layout_marginStart="10dp"
                 android:src="@drawable/ic_person_black_24dp" />
 
             <TextView
@@ -46,9 +48,8 @@
                 android:layout_marginTop="60dp"
                 android:layout_toEndOf="@id/image"
                 android:paddingStart="20dp"
-                android:paddingEnd="12dp"
+                android:paddingEnd="20dp"
                 android:text="AHOUANDJINOU"
-
                 android:textColor="#2699FB" />
 
             <TextView

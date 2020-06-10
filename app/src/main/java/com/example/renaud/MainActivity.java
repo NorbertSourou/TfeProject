@@ -1,16 +1,17 @@
 package com.example.renaud;
 
-import android.app.ProgressDialog;
-import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
-import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+
+import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,42 +32,53 @@ import okhttp3.ResponseBody;
 
 public class MainActivity extends AppCompatActivity {
     ListView mainactivity;
-    ArrayList<MyItem> myitems = new ArrayList<>();
+    EditText nameAlert, surnameAlert, litAlert;
+    ArrayList<MyItem> myitems = new ArrayList<MyItem>();
     MyAdapter adapter = null;
     OkHttpClient client = new OkHttpClient();
     FloatingActionButton fab;
-    //  String[] prenom = {"Alexis", "Quentin", " Valentin", "Bastien", "Antoine", "Geoffrey", "Jordan", "Tristan", "Steven", "Jason", "Jimmy", "Lucas", "Théo", "Baptiste", "Axel", "Jessy", "Arthur", "Simon", "Louis", "Gaétan", "Florent", "Michael", "Christophe", "Benoît", "Jérôme", "Stéphane", "Arnaud", "Frédéric", "Laurent", "Ludovic", "Aurélien", "Cédric", "Jean", "Marc", "Gregory", "Olivier", "Fabien", "Loïcé", "Yannick", "Damien"};
-    // String[] names = {"Martin", "Bernard", "Thomas", "Petit", "Robert", "Richard", "Durand ", "Dubois", "Moreau", "Laurent", "Simon", "Michel", "Lefebvre", "Leroy", "Roux", "David", "Bertrand", "Morel", "Fournier", "Girard", "Bonnet", "Dupont", "Lambert", "Fontaine", "Rousseau", "Vincent", "Muller", "Lefevre", "Faure", "Andre", "Mercier", "Blanc", "Guerin", "Boyer", "Garnier", "Chevalier", "Francois", "Legrand", "Gauthier", "Garcia"};
-    ProgressBar progressBar;
-
-
+String e="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         fab = findViewById(R.id.fab);
+
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
         // String m = "";
         try {
-            Log.d("URLL", "onCreate: " + run("http://192.168.43.148:8000/api/patient"));
+            Log.d("URLL", "onCreate: " + run("http://192.168.137.172:8000/api/patient"));
 
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+        populateListView();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LayoutInflater layoutInflater=MainActivity.this.getLayoutInflater();
-                final View view = layoutInflater.inflate(R.layout.alert_dialog, null);
-                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(MainActivity.this);
+
+                nameAlert = findViewById(R.id.editTextName);
+                surnameAlert = findViewById(R.id.editTextSurname);
+                LayoutInflater layoutInflater = MainActivity.this.getLayoutInflater();
+                final View view1 = layoutInflater.inflate(R.layout.alert_dialog, null);
+                final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(MainActivity.this);
                 // new MaterialAlertDialogBuilder(MainActivity.this)
-                dialogBuilder.setMessage("Successfully added task")
-                        .setTitle("Ajouter un patient")
-                        .setPositiveButton(android.R.string.ok, null)
+                dialogBuilder
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                              e  =nameAlert.getText().toString();
+                                Toast.makeText(getApplicationContext(), "Text entered is " + e, Toast.LENGTH_SHORT).show();
+
+                            }
+                        })
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .setView(view1)
+                        .setCancelable(false)
                         .show();
             }
         });
@@ -79,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         }*/
         //adapter = new MyAdapter(MainActivity.this, myitems);
         //mainactivity.setAdapter(adapter);
-        populateListView();
+
     }
 
     //    private class getJson extends AsyncTask<Void, Void, Void> {
@@ -151,26 +163,22 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < array.length(); i++) {
                     JSONObject json_data = array.getJSONObject(i);
                     resultRow.setName(json_data.getString("nom"));
-                    Log.d("TAG", "onResponse: " + json_data.getString("nom"));
                     resultRow.setSurname(json_data.getString("prenom"));
-                    resultRow.setTelephone("Lit n°" + json_data.getString("numerolit"));
+                    Log.d("1234", "run: " + resultRow);
+                    // resultRow.setTelephone("Lit n°" + json_data.getString("numerolit"));
 //                    JSONArray obj = new JSONArray(json_data.getString("patients"));
 //                    JSONObject b = obj.getJSONObject(0);
-//                    Log.d("TAG11", "onResponse: " + b.getString("humidite"));
                     myitems.add(resultRow);
+
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            return ms;
+            return null;
         }
     }
 
     private void populateListView() {
-        final ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
-        //   progressDialog.setMessage("Loading");
-        //  progressDialog.show();
-
 
         ListView mainactivity = findViewById(R.id.list_view);
         adapter = new MyAdapter(MainActivity.this, myitems);
