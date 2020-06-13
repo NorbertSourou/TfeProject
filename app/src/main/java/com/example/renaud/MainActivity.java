@@ -163,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
                     resultRow.setSurname(json_data.getString("prenom"));
                     Log.d("1234", "run: " + resultRow);
                     // resultRow.setTelephone("Lit n°" + json_data.getString("numerolit"));
+                    resultRow.setTelephone("Lit n°" + 1);
 //                    JSONArray obj = new JSONArray(json_data.getString("patients"));
 //                    JSONObject b = obj.getJSONObject(0);
                     myitems.add(resultRow);
