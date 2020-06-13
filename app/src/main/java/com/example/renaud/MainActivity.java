@@ -8,10 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
-
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
     MyAdapter adapter = null;
     OkHttpClient client = new OkHttpClient();
     FloatingActionButton fab;
-String e="";
+    String e = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +49,7 @@ String e="";
         }
         // String m = "";
         try {
-            Log.d("URLL", "onCreate: " + run("http://192.168.137.172:8000/api/patient"));
+            Log.d("URLL", "onCreate: " + run("http://192.168.1.120:8000/api/patient"));
 
 
         } catch (IOException e) {
@@ -71,9 +70,7 @@ String e="";
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                              e  =nameAlert.getText().toString();
-                                Toast.makeText(getApplicationContext(), "Text entered is " + e, Toast.LENGTH_SHORT).show();
-
+                                //Log.d("&&&&&", "onClick: "+nameAlert.getText().toString());
                             }
                         })
                         .setNegativeButton(android.R.string.cancel, null)

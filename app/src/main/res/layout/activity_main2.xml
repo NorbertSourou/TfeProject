@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="12dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:padding="5dp">
 
@@ -30,15 +30,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="35dp"
-            android:textColor="#2699FB"
-            android:text="Lit n°1" />
+            android:text="Lit n°1"
+            android:textColor="#2699FB" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginHorizontal="4dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
         <TextView
@@ -46,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Température\nambiante"
+            android:text="Température ambiante"
             android:textAlignment="center"
             android:textColor="#2699FB" />
 
@@ -61,10 +62,37 @@
             android:textSize="25sp" />
     </LinearLayout>
 
-    <com.github.mikephil.charting.charts.LineChart
+    <!--    <com.github.mikephil.charting.charts.LineChart-->
+    <!--        android:id="@+id/chart1"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="200dp" />-->
+    <RelativeLayout
         android:id="@+id/chart1"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:layout_marginVertical="10dp"
+        android:background="@drawable/circle">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:text="Heart Rate"
+            android:textColor="#2999FB" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="125 bpm"
+            android:textColor="#2999FB"
+            android:textSize="25sp" />
+
+
+    </RelativeLayout>
 
     <GridLayout
         android:layout_width="match_parent"

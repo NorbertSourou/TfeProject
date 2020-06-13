@@ -6,19 +6,19 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="15dp"
         android:gravity="center"
         android:text="Ajouter un Patient"
-        android:textSize="20dp"
-        android:textColor="#2699FB" />
+        android:textColor="#2699FB"
+        android:textSize="20dp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:backgroundTint="#2699FB"
         android:hint="Name"
         android:textColorHint="#2699FB"
